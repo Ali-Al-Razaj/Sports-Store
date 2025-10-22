@@ -18,8 +18,6 @@ builder.Services.AddDbContext<StoreDbContext>
 
 builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
 
-builder.Services.AddRazorPages();
-
 WebApplication app = builder.Build();
 
 //app.MapGet("/", () => "Hello World!");
@@ -33,8 +31,6 @@ app.MapControllerRoute("category", "{category}", new { Controller = "Home", acti
 app.MapControllerRoute("pagination", "Products/Page{productPage}", new { Controller = "Home", action = "Index", productPage = 1 });
 
 app.MapDefaultControllerRoute();
-
-app.MapRazorPages();
 
 SeedData.EnsurePopulated(app);
 
